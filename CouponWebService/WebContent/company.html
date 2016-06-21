@@ -1,0 +1,194 @@
+
+<div class="container">
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" ng-class="{active:isSelected(1)}"><a
+			href="" ng-click="select(1)" role="tab">Company Coupons</a></li>
+
+	</ul>
+	<div id="couponTable">
+		<div class="btn-group" id="topinput">
+			<div class="searchbox">
+				<input id="searchinput" type="search" class="form-control"
+					ng-model="searchTitle" placeholder="Search by Title" /> <span
+					id="searchclear" class="glyphicon glyphicon-remove-circle"
+					ng-click="searchTitle = ''"></span>
+			</div>
+			<div class="searchbox">
+				<input id="searchinput" type="search" class="form-control"
+					ng-model="searchType" placeholder="Search by Type" /> <span
+					id="searchclear" class="glyphicon glyphicon-remove-circle"
+					ng-click="searchType = ''"></span>
+			</div>
+			<div class="searchbox">
+				<input id="searchinput" type="search" class="form-control"
+					ng-model="searchPrice" placeholder="Search by Price" /> <span
+					id="searchclear" class="glyphicon glyphicon-remove-circle"
+					ng-click="searchPrice = ''"></span>
+			</div>
+			<div class="btn-group" role="group" aria-label="...">
+
+				<button type="button" class="btn btn-default"
+					ng-click="showCreateForm()">Create Coupon</button>
+			</div>
+		</div>
+		<div id=update>
+			<form class="form-inline" ng-show="updateForm"
+				ng-submit="updateCoupon(updateCoupId, updateCoupTitle, updateCoupStartDate, updateCoupEndDate,
+					 updateCoupAmount, updateCoupType, updateCoupMessage, updateCoupPrice, updateCoupImage)">
+				<h3>Update Coupon</h3>
+				<div class="form-group">
+					<div>ID</div>
+					<label for="couponId"></label> <input type="text"
+						class="form-control" id="couponId" ng-model="updateCoupId"
+						readonly />
+				</div>
+				<div class="form-group">
+				<div>Title</div>
+					<label for="couponTitle"></label> <input type="text"
+						class="form-control" id="couponTitle" ng-model="updateCoupTitle" readonly />
+				</div>
+				<div class="form-group">
+				<div>Start Date</div>
+					<label for="couponStartDate"></label> <input type="text" onfocus="(this.type='date')"
+						class="form-control" id="couponStartDate"
+						ng-model="updateCoupStartDate" />
+				</div>
+				<div class="form-group">
+					<div>End Date</div>
+					<label for="couponEndDate"></label> <input type="text" onfocus="(this.type='date')"
+						class="form-control" id="couponEndDate"
+						ng-model="updateCoupEndDate" />
+				</div>
+				<div class="form-group">
+				<div>Amount</div>
+					<label for="couponAmount"></label> <input type="text"
+						class="form-control" id="couponAmount" ng-model="updateCoupAmount" />
+				</div>
+				<div class="form-group">
+					<div>Type</div>
+					<label for="couponType"></label> <select type="text"
+						class="form-control" id="couponType" ng-model="updateCoupType">
+						<option>FOOD</option>
+						<option>HEALTH</option>
+						<option>SPORTS</option>
+						<option>TRAVEL</option>
+						<option>CAMPING</option>
+						<option>RESTAURANTS</option>
+						<option>ELECTRICITY</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<div>Message</div>
+					<label for="couponMessage"></label> <input type="text"
+						class="form-control" id="couponMessage"
+						ng-model="updateCoupMessage" />
+				</div>
+				<div class="form-group">
+					<div>Price</div>
+					<label for="couponPrice"></label> <input type="text"
+						class="form-control" id="couponPrice" ng-model="updateCoupPrice" />
+					<button type="submit" class="btn btn-default">UPDATE</button>
+				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label for="couponImage"></label> <input type="text" -->
+<!-- 						class="form-control" id="couponImage" ng-model="updateCoupImage" /> -->
+<!-- 				</div> -->
+			</form>
+		</div>
+		<div id=create>
+			<form class="form-inline" ng-submit="createCoupon(coupon)"
+				ng-show="createForm">
+				<h3>Create Coupon</h3>
+				<div class="form-group">
+					<input type="text" class="form-control" id="couponTitle"
+						placeholder="Enter Name" ng-model="coupon.title" />
+				</div>
+				<div class="form-group">
+					<input type="date" class="form-control" id="couponStartDate"
+						placeholder="Enter Start Date" ng-model="coupon.startDate" />
+				</div>
+				<div class="form-group">
+					<input type="date" class="form-control" id="couponEndDate"
+						placeholder="Enter End Date" ng-model="coupon.endDate" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="couponAmount"
+						placeholder="Enter Amount" ng-model="coupon.amount" />
+				</div>
+				<div class="form-group">
+					<select type="text" class="form-control" id="couponType"
+						ng-model="coupon.type">
+						<option disabled selected value>Choose A Type</option>
+						<option>FOOD</option>
+						<option>HEALTH</option>
+						<option>SPORTS</option>
+						<option>TRAVEL</option>
+						<option>CAMPING</option>
+						<option>RESTAURANTS</option>
+						<option>ELECTRICITY</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="companyMessage"
+						placeholder="Enter Message" ng-model="coupon.message" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="companyPrice"
+						placeholder="Enter Price" ng-model="coupon.price" />
+				</div>
+
+		<div class="form-group">
+   			<input type='file' id="fileInput" file-model='file'  />
+  				<span ng-model="result" ng-show="uploadFail"></span>
+  		</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-default">CREATE</button>
+				</div>
+			</form>
+
+		</div>
+	 
+		<table class="table table-striped " id="couponTable">
+			<h2>Coupons</h2>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Amount</th>
+				<th>Type</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Amount Sold</th>
+				<th>Actions</th>
+
+			</tr>
+<span><img id="mySpinner" src="images/spinner.gif" ng-show="loading" /></span>
+			<tr
+				ng-repeat="coupon in coupons | filter:{title:searchTitle} | filter:{type:searchType} |  filter: lessThanPrice('price')">
+				<td>{{ coupon.couponId }}</td>
+				<td>{{ coupon.title }}</td>
+				<td>{{ coupon.price }}</td>
+				<td>{{ coupon.amount }}</td>
+				<td>{{ coupon.type }}</td>
+				<td>{{ coupon.startDate }}</td>
+				<td>{{ coupon.endDate }}</td>
+				<td>{{ coupon.amountSold }}</td>
+				<td><div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Action <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="" ng-click="showUpdateCoupon(coupon)">Update</a></li>
+							<li><a href="" ng-click="removeCoupon(coupon.couponId, coupon.image)">Delete</a></li>
+						</ul>
+					</div></td>
+			</tr>
+		</table>
+	</div>
+	<div id="successLog" ng-show="successLog">
+		<span class="glyphicon glyphicon-thumbs-up"> &nbsp; </span>{{log}}
+	</div>
+	<div id="errorLog" ng-show="errorLog">{{message}}</div>
+</div>
+

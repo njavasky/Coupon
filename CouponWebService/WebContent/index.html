@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" ng-app="couponApp">
+  <head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coupon Project</title>
+  <!-- Angularjs -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <!-- Angularjs Route -->
+	<script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<!-- J-query -->
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+       <!-- Fonts -->
+ <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <script src="services.js"></script>
+    <script src="controller.js"></script>
+<body>
+  <header ng-controller="app">
+    <nav id="header-nav" class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+         
+
+          <div class="navbar-brand">
+            <a href="index.html"><h1>ABN Coupons</h1></a>
+            <p>Asaf Elimelech, Bar Edri, Netanel Javasky</p>
+            
+          </div>
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        
+        <div id="collapsable-nav" class="collapse navbar-collapse">
+           <ul id="nav-list" class="nav navbar-nav navbar-right">
+            <li>
+              <a ng-href="#/login">
+                <span class="glyphicon glyphicon-home"></span><br class="hidden-xs"> Home</a>
+            </li>
+            <li>
+              <a ng-href="#/login">
+                <span class="glyphicon glyphicon-lock"></span><br class="hidden-xs"> Login</a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="glyphicon glyphicon-envelope"></span><br class="hidden-xs"> Contact </a>
+            </li>
+         	<li  ng-click="logout()" id="logout">
+			<a href="#" >
+            <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs"> Logout</a>
+			</li>
+            
+          </ul><!-- #nav-list -->
+        </div><!-- .collapse .navbar-collapse -->
+      </div><!-- .container -->
+    </nav><!-- #header-nav -->
+  </header>
+
+<ng-view></ng-view>
+  
+
+  <footer class="panel-footer">
+    <div class="container">
+      <div class="row">
+        <section id="message" class="col-sm-7">
+          <span>Deals worth for Businesses:</span><br>
+          ABN is an easy, simple and fast way to get big discounts all over the country using<br>
+         coupons. Our deals consist of restaurants, spa packages, gyms, concerts, plays, gyms,<br>
+          attractions, shows, vacation packages, flights, hotels, guest houses, Home & Garden,<br>
+           electronics, laptops, fashion accessories and a variety of others, all over the country. <br>
+          <hr class="visible-xs">
+        </section>
+        <section id="contact" class="col-sm-5">
+          <span>Contact us:</span><br>
+          Asaf Elimelech  T: 0544-749275  E: elimelech.asaf@gmail.com<br>
+          Bar Edri  T: 0524-205987  E: baredri1993@gmail.com<br>
+          Netanel Javasky  T: 0532-458584  E: taneljavasky@gmail.com<br>
+          <hr class="visible-xs">
+        </section>
+      </div>
+    </div>
+  </footer>
+
+ 
+</body>
+</html>

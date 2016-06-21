@@ -1,0 +1,77 @@
+	<div id="main-content" class="container">
+
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" ng-class="{active:isSelected(1)}"><a
+				href="" ng-click="select(1)" role="tab">All Coupons</a></li>
+			<li role="presentation" ng-class="{active:isSelected(2)}"><a
+				href="" ng-click="select(2)" role="tab">My Coupons</a></li>
+
+		</ul>
+	<div ng-show="showMyCoupons" >
+			<div class="btn-group" id="topinput">
+				<div class="searchbox">
+					<input id="searchinput" type="search" class="form-control"
+						ng-model="searchTitle" placeholder="Search by Title" /> <span
+						id="searchclear" class="glyphicon glyphicon-remove-circle"
+						ng-click="searchTitle = ''"></span>
+				</div>
+				<div class="searchbox">
+					<input id="searchinput" type="search" class="form-control"
+						ng-model="searchType" placeholder="Search by Type" /> <span
+						id="searchclear" class="glyphicon glyphicon-remove-circle"
+						ng-click="searchType = ''"></span>
+				</div>
+				<div class="searchbox">
+					<input id="searchinput" type="search" class="form-control"
+						ng-model="searchPrice" placeholder="Search by Price" /> <span
+						id="searchclear" class="glyphicon glyphicon-remove-circle"
+						ng-click="searchPrice = ''"></span>
+				</div>
+			</div>
+		<table class="table table-striped " id="couponTable" >
+			<h3></h3>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Type</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+			</tr>
+			<tr
+				ng-repeat="coupon in myCoupons | filter:{title:searchTitle} | filter:{type:searchType} |  filter: lessThanPrice('price')">
+				<td>{{ coupon.couponId }}</td>
+				<td>{{ coupon.title }}</td>
+				<td>{{ coupon.price }}</td>
+				<td>{{ coupon.type }}</td>
+				<td>{{ coupon.startDate }}</td>
+				<td>{{ coupon.endDate }}</td>
+			</tr>
+		</table>
+		</div>
+	<div class="row" ng-show="showAllCoupons">
+	<span><img id="mySpinner" src="images/spinner.gif" ng-show="loading" /></span>
+		<div class="clearfix" ng-if="$index % 4 == 0"></div>
+		<div class="col-sm-3" id="coupon-tiles" ng-repeat="coupon in allCoupons | filter: checkDate('startDate','endDate')" ng-if="coupon.amount>0" >
+			<div> <img ng-src= "http://localhost:8080/CouponWebService2/rest/files/customer/download/{{coupon.image}}" />
+			</div>
+			<div>{{coupon.title}}</div>
+			<div>price:{{coupon.price}}</div>
+			<div>start date:{{coupon.startDate}}</div>
+			<div>end date:{{coupon.endDate}}</div>
+
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default" ng-click="buy(coupon)">Purchase</button>
+			</div>
+
+		</div>
+		
+	</div>
+	<div id="successLog" ng-show="successLog">
+		<span class="glyphicon glyphicon-thumbs-up"> &nbsp; </span>{{log}}
+	</div>
+	
+
+
+
+	</div>

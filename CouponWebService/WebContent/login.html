@@ -1,0 +1,21 @@
+    <div class="container" id="login" >
+        <h1>Welcome to the Coupon System Login </h1>
+        <div class="login" id="loginform">
+            
+        <input type="text" placeholder="Username" id="username" ng-model="login.username"/> <br /><br />
+        <input type="password" placeholder="Password" id="password" ng-model="login.password"/><br /><br />
+        
+        <select id="type" ng-model="login.type">
+    <option disabled selected value>Choose A Type</option>
+    <option value="customer">CUSTOMER</option>
+    <option value="company">COMPANY</option>
+    <option value="admin">ADMIN</option>
+  
+    </select>    
+        <input type="submit" id="submit" value="Submit"  ng-click="login(login.username,login.password,login.type)" />
+   	 </div>
+   	 <br/>
+   	 <span >{{error}}</span>
+    </div>
+
+

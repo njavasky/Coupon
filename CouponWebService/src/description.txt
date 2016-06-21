@@ -1,0 +1,19 @@
+# Welcome to the Coupons Web Project Description
+
+### Goal
+To work with a group to create an end-to-end Java Application to manage a coupon system (e.g. Groupon). 
+
+### Back End
+Buit a multi-layered application using OOP principles which included a ConnectionPool to establish and manage JDBC connections for CRUD sql actions in Apache Tomcat Database. Three facades which incorporated the business logic of different types of clients (Admin, Company, Customer) were created to access the Coupon System which was created using the Singleton design pattern. A cleanup thread was also used to run once daily discarding expired coupons from the system. 
+
+### Web Services
+We created a Client side MVC model with Jersey Rest Web Services to handle the AJAX http requests. The uniqe facade was placed on the session for security and a Session Web Filter was also put in place to protect against unauthorized access to the web services. Wrapper Classes to hide the password from the front-end user were also used.
+
+Web Services for uploading and downloading pictures for the coupons were also created.
+
+### Front End
+The templates were written in HTML using Bootstrap and the controller was written in AngularJS using AJAX to create a Single Page Application.
+
+### EJB
+In the final stage we added functionality to track the income from the companies and customers using JPA/hibernate to create Entity Beans. The income was managed with asynchronous calls to a JMS (Message Driven Bean).
+

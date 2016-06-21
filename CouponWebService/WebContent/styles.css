@@ -1,0 +1,185 @@
+body {
+  font-size: 16px;
+  color: #fff;
+  background-color: #ff9c5f;
+  font-family: 'Oxygen', sans-serif;
+
+}
+
+/* HEADER */
+#header-nav {
+  background-color: red;
+  border-radius: 0;
+  border: 0;
+}
+
+
+.navbar-brand {
+  padding-top: 25px;
+  padding-left: 50px;
+}
+.navbar-brand h1 {
+  font-family: 'Lora', serif;
+  color: #5fa292;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #222;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: .75;
+}
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+.navbar-brand p { 
+  color: #000;
+  font-size: .7em;
+  margin-top: 15px;
+}
+
+
+#nav-list {
+  margin-top: 10px;
+}
+#nav-list a {
+  color: #5fa292;
+  text-align: center;
+}
+#nav-list a:hover {
+  background: #E7E7E7;
+}
+#nav-list a span {
+  font-size: 1.8em;
+}
+
+/* END HEADER */
+
+/* FOOTER */
+.panel-footer {
+  margin-top: 30px;
+  padding-top: 35px;
+  padding-bottom: 30px;
+  background-color: #7a9a95;
+  border-top: 0;
+}
+.panel-footer div.row {
+  margin-bottom: 35px;
+}
+#message, #contact {
+  line-height: 2;
+}
+#message > span, #contact > span {
+  font-size: 1.3em;
+}
+
+/* END FOOTER */
+
+/* SEARCH BOXES */
+
+.searchbox {
+	position: relative;
+	float: left;
+	
+}
+
+#searchinput {
+	position: relative;
+	float:left;
+    width: 200px;
+    text-align: center;
+}
+
+#searchclear{
+    position: relative;
+    float: right;
+    top: 9px;
+    right: 25px;
+    height: 14px;
+    margin: auto;
+    font-size: 20px;
+    cursor: pointer;
+    color: #33BBFF;
+}
+
+#topinput{
+	margin-top:25px;
+}
+
+#logout{
+	position: relative;
+	float:right;
+}
+
+/*  END SEARCH BOXES */
+
+/* LOADING IMAGE*/
+
+#mySpinner{
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+}
+
+/* END LOADING IMAGE*/
+
+#companyTable #customerTable #CouponTable{
+	margin-top:45px;
+}
+
+
+.form-group {
+	margin: 20px;
+}
+
+.glyphicon-thumbs-up:before {
+    font-size: large;
+}
+/*  TABLES */
+.table-striped>tbody>tr:nth-child(even)>td 
+ {
+   background-color: #5fa292;
+ }
+ .table-striped>tbody>tr:nth-child(odd)>td 
+ {
+   background-color: #7a9a95;
+ }
+ .table-striped>tbody>tr:nth-child(odd)>th{
+ background-color: #7a9a95;
+ color:#253939;
+ }
+
+#couponType{
+	width:178px;
+}
+
+ /*  END TABLES */
+ 
+ 
+#login{
+	color:#253939;
+}
+#loginform{
+	margin-top:45px;		
+}
+
+/* Customer Page */
+#coupon-tiles img{
+	margin-top:10px;
+	height:130px;
+	width:140px;
+	
+}
+
+/* Error Page */
+
+#fof{display:block; width:100%; padding:150px 0; line-height:1.6em; text-align:center;}
+#fof .hgroup{margin-bottom:15px;}
+#fof .hgroup h1, #fof .hgroup h2{margin:0; padding:0; text-transform:uppercase;}
+#fof .hgroup h1{margin-bottom:15px; font-size:40px;}
+#fof .hgroup h2{display:inline-block; padding:0 0 15px 0; font-size:80px; border:solid #CCCCCC; border-width:1px 0; text-transform:lowercase;}
+#fof p{display:block; margin:15px 0 0 0; padding:0; font-size:16px;}
+#fof p:first-child{margin-top:0;}
+

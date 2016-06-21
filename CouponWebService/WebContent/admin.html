@@ -1,0 +1,286 @@
+
+<div class="container">
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" ng-class="{active:isSelected(1)}"><a
+			href="" ng-click="select(1)" role="tab">Coupons</a></li>
+		<li role="presentation" ng-class="{active:isSelected(2)}"><a
+			href="" ng-click="select(2)" role="tab">Companies</a></li>
+		<li role="presentation" ng-class="{active:isSelected(3)}"><a
+			href="" ng-click="select(3)" role="tab">Customers</a></li>
+	</ul>
+
+	<div ng-show="couponTable">
+		<div class="btn-group" id="topinput">
+			<div class="searchbox">
+				<input id="searchinput" type="search" class="form-control"
+					ng-model="searchTitle" placeholder="Search by Title" /> <span
+					id="searchclear" class="glyphicon glyphicon-remove-circle"
+					ng-click="searchTitle = ''"></span>
+			</div>
+			<div class="searchbox">
+				<input id="searchinput" type="search" class="form-control"
+					ng-model="searchType" placeholder="Search by Type" /> <span
+					id="searchclear" class="glyphicon glyphicon-remove-circle"
+					ng-click="searchType = ''"></span>
+			</div>
+			<div class="searchbox">
+				<input id="searchinput" type="search" class="form-control"
+					ng-model="searchPrice" placeholder="Search by Price" /> <span
+					id="searchclear" class="glyphicon glyphicon-remove-circle"
+					ng-click="searchPrice = ''"></span>
+			</div>
+		</div>
+		<table class="table table-striped " id="couponTable">
+			<h2>Coupons</h2>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Amount</th>
+				<th>Type</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Amount Sold</th>
+				<th>Actions</th>
+			</tr>
+	 	 <span><img id="mySpinner" src="images/spinner.gif" ng-show="loading" /></span>
+			<tr
+				ng-repeat="coupon in coupons | filter:{title:searchTitle} | filter:{type:searchType} |  filter: lessThanPrice('price')">
+				<td>{{ coupon.couponId }}</td>
+				<td>{{ coupon.title }}</td>
+				<td>{{ coupon.price }}</td>
+				<td>{{ coupon.amount }}</td>
+				<td>{{ coupon.type }}</td>
+				<td>{{ coupon.startDate }}</td>
+				<td>{{ coupon.endDate }}</td>
+				<td>{{ coupon.amountSold }}</td>
+				<td><div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Action <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="" ng-click="removeCoupon(coupon.couponId)">Delete</a></li>
+						</ul>
+					</div></td>
+			</tr>
+		</table>
+	</div>
+
+	<div ng-show="companyTable">
+
+		<div class="btn-group" id="topinput">
+			<div class="searchbox">
+				<input id="searchinput" type="search" class="form-control"
+					ng-model="searchCompany" placeholder="Search by Name" /> <span
+					id="searchclear" class="glyphicon glyphicon-remove-circle"
+					ng-click="searchCompany= ''"></span>
+			</div>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default"
+					ng-click="showCreateForm()">Create Company</button>
+			</div>
+		</div>
+
+
+		<div id=update>
+			<form class="form-inline"
+				ng-submit="updateCompany(updateCompanyId, updateCompanyName, updateCompanyPassword, updateCompanyEmail)"
+				ng-show="updateForm">
+				<h3>Update Company</h3>
+				<div class="form-group">
+					<div>ID</div>
+					<input type="text" class="form-control" id="companyId"
+						ng-model="updateCompanyId" readonly />
+				</div>
+
+				<div class="form-group">
+			<div>Company Name</div>
+					<input type="text" class="form-control" id="companyName"
+						ng-model="updateCompanyName" readonly />
+
+				</div>
+				<div class="form-group">
+					<div>Password</div>
+					<input type="text" class="form-control" placeholder="update password" id="companyPassword"
+						ng-model="updateCompanyPassword" />
+
+				</div>
+				<div class="form-group">
+					<div>Email</div>
+					<input type="email" class="form-control" id="companyEmail"
+						ng-model="updateCompanyEmail" />
+					<button type="submit" class="btn btn-default">UPDATE</button>
+				</div>
+			</form>
+		</div>
+
+		<div id=create>
+			<form class="form-inline" ng-submit="createCompany(company)"
+				ng-show="createForm">
+				<h3>Create Company</h3>
+				<div class="form-group">
+					<input type="text" class="form-control" id="companyName"
+						placeholder="Enter Name" ng-model="company.companyName" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="companyPassword"
+						placeholder="Enter Password" ng-model="company.password" />
+
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" id="companyEmail"
+						placeholder="Enter Email" ng-model="company.email" />
+					<button type="submit" class="btn btn-default">CREATE</button>
+				</div>
+			</form>
+		</div>
+
+		<table class="table table-striped" id="companyTable">
+			<h2>Companies</h2>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Actions</th>
+			</tr>
+			<tr
+				ng-repeat="company in companies | filter:{companyName:searchCompany} ">
+				<td>{{ company.companyId }}</td>
+				<td>{{ company.companyName }}</td>
+				<td>{{ company.email }}</td>
+				<td><div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Action <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="" ng-click="showUpdateCompany(company)">Update</a></li>
+							<li><a href=""
+								ng-click="showCoupons(company.coupons, company.companyId)">Company
+									Coupons</a></li>
+							<li><a href="" ng-click="removeCompany(company.companyId)">Delete</a></li>
+						</ul>
+					</div></td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div ng-show="customerTable">
+
+		<div class="btn-group" id="topinput">
+			<div class="searchbox">
+				<input id="searchinput" type="search" class="form-control"
+					ng-model="searchCustomer" placeholder="Search by Name" /> <span
+					id="searchclear" class="glyphicon glyphicon-remove-circle"
+					ng-click="searchCustomer= ''"></span>
+			</div>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default"
+					ng-click="showCreateForm()">Create Customer</button>
+
+			</div>
+		</div>
+		<div id=update>
+			<form class="form-inline" ng-show="updateForm"
+				ng-submit="updateCustomer(updateCustomerId,updateCustomerName,updateCustomerPassword)">
+				<h3>Update Customer</h3>
+				<div class="form-group">
+					<div>ID</div>
+					<label for="customerId"></label> <input type="text"
+						class="form-control" id="customerId" ng-model="updateCustomerId"
+						readonly />
+				</div>
+				<div class="form-group">
+					<div>Name</div>
+					<label for="customerName"></label> <input type="text"
+						class="form-control" id="customerName"
+						ng-model="updateCustomerName" readonly />
+				</div>
+				<div class="form-group">
+					<div>Password</div>
+					<label for="customerPassword"></label> <input type="text"
+						class="form-control" id="customerPassword" placeholder="update password"
+						ng-model="updateCustomerPassword" />
+					<button type="submit" class="btn btn-default">UPDATE</button>
+				</div>
+			</form>
+		</div>
+		<div id=create>
+			<form class="form-inline" ng-submit="createCustomer(customer)"
+				ng-show="createForm">
+				<h3>Create Customer</h3>
+				<div class="form-group">
+					<input type="text" class="form-control" id="customerName"
+						placeholder="Enter Name" ng-model="customer.customerName" />
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="customerPassword"
+						placeholder="Enter Password" ng-model="customer.password" />
+					<button type="submit" class="btn btn-default">CREATE</button>
+				</div>
+
+			</form>
+		</div>
+		<table class="table table-striped" id="customerTable">
+			<h2>Customers</h2>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Actions</th>
+			</tr>
+			<tr ng-repeat="customer in customers | filter:{customerName:searchCustomer}">
+				<td>{{ customer.customerId }}</td>
+				<td>{{ customer.customerName }}</td>
+				<td><div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Action <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="" ng-click="showUpdateCustomer(customer)">Update</a></li>
+							<li><a href="" ng-click="showCoupons(customer.coupons, customer.customerId)">Customer
+									Coupons</a></li>
+							<li><a href="" ng-click="removeCustomer(customer.customerId)">Delete</a></li>
+						</ul>
+					</div></td>
+			</tr>
+
+		</table>
+	</div>
+	<div id="successLog" ng-show="successLog">
+		<span class="glyphicon glyphicon-thumbs-up"> &nbsp; </span>{{log}}
+	</div>
+	<div id="errorLog" ng-show="errorLog">{{message}}</div>
+
+
+	<div ng-show="couponJointTable">
+		<h3 ng-show="companyCouponsShow">Company ID
+			{{companyCouponsShowId}} Coupons</h3>
+		<h3 ng-show="customerCouponsShow">Customer ID
+			{{customerCouponsShowId}} Coupons</h3>
+		<table class="table table-striped ">
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Amount</th>
+				<th>Type</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+			</tr>
+			<tr ng-repeat="coupon in jointCoupons">
+				<td>{{ coupon.couponId}}</td>
+				<td>{{ coupon.title }}</td>
+				<td>{{ coupon.price }}</td>
+				<td>{{ coupon.amount }}</td>
+				<td>{{ coupon.type }}</td>
+				<td>{{ coupon.startDate }}</td>
+				<td>{{ coupon.endDate }}</td>
+		</table>
+	</div>
+
+
+
+</div>
