@@ -43,7 +43,7 @@
 				<th>Amount Sold</th>
 				<th>Actions</th>
 			</tr>
-	 	 <span><img id="mySpinner" src="images/spinner.gif" ng-show="loading" /></span>
+	 	 <span><img id="mySpinner" src="graphics/spinner.gif" ng-show="loading" /></span>
 			<tr
 				ng-repeat="coupon in coupons | filter:{title:searchTitle} | filter:{type:searchType} |  filter: lessThanPrice('price')">
 				<td>{{ coupon.couponId }}</td>

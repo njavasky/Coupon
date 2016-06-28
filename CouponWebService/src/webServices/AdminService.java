@@ -80,6 +80,7 @@ public class AdminService {
 			return companyListWrapper(companies);
 		} catch (Exception e) {
 			res.sendError(550);
+
 		}
 		return null;
 	}

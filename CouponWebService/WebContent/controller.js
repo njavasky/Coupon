@@ -419,8 +419,8 @@ angular.module('couponApp')
   		  alert("The coupon title "+ coupon.title+" already exists. Please enter a different title.");
   		} else if(Date.parse(coupon.startDate)>=Date.parse(coupon.endDate)){	
   		alert("The end date of the coupon must be after the start date. Please modify the dates.");
-  		} else{
-  	    	coupon.image = setImagePath();
+  		} else 	if(validateImg()){
+  			coupon.image = setImagePath();
   			upload(coupon.title);
   			companyService.createCoupon(coupon)
  	      .then(function(response) {
@@ -446,6 +446,7 @@ angular.module('couponApp')
 
   		}
   	  }
+    
     function setImagePath(){
     var fileName = angular.element(fileInput).val();
 		var index = fileName.lastIndexOf(".");
@@ -465,6 +466,21 @@ angular.module('couponApp')
     	  $scope.result = "There was a problem uploading your image, please try again";
       });
     }
+    
+    function validateImg(){
+    	var allowed = ['jpg','gif','png', 'jpe'];
+    	var fileName = angular.element(fileInput).val();
+        var ext = fileName.substr(fileName.lastIndexOf(".")+1);
+        // check if this image extension is in allowed array. If not will return -1
+        if(allowed.indexOf(ext)<0){
+             alert("invalid image format: please upload an acceptable image file (.jpg, .jpe, .gif, png ");
+             return false;
+        }
+        return true;
+    }
+        
+    
+    
     $scope.showCreateForm=function(){
  	   hide_all_and_show_one_insideTab( 'createForm');
     }
