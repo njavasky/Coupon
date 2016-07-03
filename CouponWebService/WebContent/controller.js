@@ -301,9 +301,11 @@ angular.module('couponApp')
         });
     
     $scope.checkDate = function(startDate, endDate){
-    	var todaysDate = new Date();
-    	 return function(coupon){
-    	    return Date.parse(coupon[startDate]) <= todaysDate && Date.parse(coupon[endDate]) >= todaysDate ;
+//must use set hours because only comparing date, not time.
+    	var todaysDateForEnd = new Date().setHours(0,0,0,0);
+    	var todaysDateForStart = new Date();
+    	return function(coupon){
+    		return Date.parse(coupon[startDate]) < todaysDateForStart && Date.parse(coupon[endDate]) > todaysDateForEnd;
     	 };
     	}
     

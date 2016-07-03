@@ -89,10 +89,6 @@
 						class="form-control" id="couponPrice" ng-model="updateCoupPrice" />
 					<button type="submit" class="btn btn-default">UPDATE</button>
 				</div>
-<!-- 				<div class="form-group"> -->
-<!-- 					<label for="couponImage"></label> <input type="text" -->
-<!-- 						class="form-control" id="couponImage" ng-model="updateCoupImage" /> -->
-<!-- 				</div> -->
 			</form>
 		</div>
 		<div id=create>
@@ -162,7 +158,7 @@
 				<th>Actions</th>
 
 			</tr>
-<span><img id="mySpinner" src="images/spinner.gif" ng-show="loading" /></span>
+<span><img id="mySpinner" src="graphics/spinner.gif" ng-show="loading" /></span>
 			<tr
 				ng-repeat="coupon in coupons | filter:{title:searchTitle} | filter:{type:searchType} |  filter: lessThanPrice('price')">
 				<td>{{ coupon.couponId }}</td>

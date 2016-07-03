@@ -50,7 +50,7 @@
 		</table>
 		</div>
 	<div class="row" ng-show="showAllCoupons">
-	<span><img id="mySpinner" src="images/spinner.gif" ng-show="loading" /></span>
+	<span><img id="mySpinner" src="graphics/spinner.gif" ng-show="loading" /></span>
 		<div class="clearfix" ng-if="$index % 4 == 0"></div>
 		<div class="col-sm-3" id="coupon-tiles" ng-repeat="coupon in allCoupons | filter: checkDate('startDate','endDate')" ng-if="coupon.amount>0" >
 			<div> <img ng-src= "http://localhost:8080/CouponWebService/rest/files/customer/download/{{coupon.image}}" />

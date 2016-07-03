@@ -2,7 +2,7 @@ Welcome to the Coupon Web Service setup instructions.
 
 To use our system please follow these directions.
 
-1. Remove the images folder and save it on your C Drive at C:\images.
+1. Remove the images folder and save it on your C Drive.(Service will download from your C:\images folder.)
 
 2. Remove the couponSysDb folder and save it in your Apache Derby database db/bin folder.
 
